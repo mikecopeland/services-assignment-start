@@ -1,41 +1,35 @@
-import {CounterService} from "./counter.service";
+import {CounterService} from './counter.service';
 
 
 
 export class UsersService {
   activeUsers: string[];
   inactiveUsers: string[];
-  usersActivatedCounter = new CounterService();
-  usersInactivatedCounter = new CounterService();
+  usersActivatedCounter: CounterService = new CounterService();
+  usersInactivatedCounter: CounterService = new CounterService();
 
   constructor() {
     this.activeUsers = [];
     this.inactiveUsers = [];
+    this.usersActivatedCounter = new CounterService();
+    this.usersInactivatedCounter = new CounterService();
   }
 
- getActiveUsers() {
-    return this.activeUsers;
-  }
-
-  getInactiveUsers() {
-    return this.inactiveUsers;
-}
-
-  setActiveUsers(users: string[]){
+  setActiveUsers(users: string[]) {
     this.activeUsers = users;
   }
 
-  setInactiveUsers(users: string[]){
+  setInactiveUsers(users: string[]) {
     this.inactiveUsers = users;
   }
 
-  activateUser(id: number){
+  activateUser(id: number) {
     this.activeUsers.push(this.inactiveUsers[id]);
     this.inactiveUsers.splice(id, 1);
     this.usersActivatedCounter.incrementCounter();
   }
 
-  inactivateUser(id: number){
+  inactivateUser(id: number) {
     this.inactiveUsers.push(this.activeUsers[id]);
     this.activeUsers.splice(id, 1);
     this.usersInactivatedCounter.incrementCounter();
