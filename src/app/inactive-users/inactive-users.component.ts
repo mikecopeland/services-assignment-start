@@ -1,6 +1,6 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {UsersService} from "../users.service";
-import {CounterService} from "../counter.service";
+import {Component, OnInit} from '@angular/core';
+import {UsersService} from '../users.service';
+import {CounterService} from '../counter.service';
 
 @Component({
   selector: 'app-inactive-users',
@@ -9,13 +9,14 @@ import {CounterService} from "../counter.service";
 })
 export class InactiveUsersComponent implements OnInit {
 
-  @Input() private users: string[];
+  private users: string[];
   numUsersInactivated: CounterService;
 
   constructor(private usersService: UsersService) {
   }
 
   ngOnInit() {
+    this.users = this.usersService.inactiveUsers;
     this.numUsersInactivated = this.usersService.usersInactivatedCounter;
   }
 
