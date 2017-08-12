@@ -11,8 +11,6 @@ export class UsersService {
   constructor() {
     this.activeUsers = [];
     this.inactiveUsers = [];
-    this.usersActivatedCounter = new CounterService();
-    this.usersInactivatedCounter = new CounterService();
   }
 
   setActiveUsers(users: string[]) {
